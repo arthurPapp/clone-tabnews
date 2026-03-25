@@ -4,6 +4,9 @@ import { env } from 'env'
 const poolConfig = env.NODE_ENV === 'production' ?
     {
         connectionString: env.POSTGRES_URL,
+        ssl: {
+            rejectUnauthorized: false,
+        }
     }
     : {
         host: env.POSTGRES_HOST,
