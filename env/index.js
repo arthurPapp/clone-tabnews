@@ -3,11 +3,11 @@ import z from "zod";
 
 
 const envSchema = z.object({
-    POSTGRES_HOST: z.string(),
-    POSTGRES_PORT: z.coerce.number(),
-    POSTGRES_USER: z.string(),
-    POSTGRES_DB: z.string(),
-    POSTGRES_PASSWORD: z.string(),
+    POSTGRES_HOST: z.string().default("production"),
+    POSTGRES_PORT: z.coerce.number().default(112),
+    POSTGRES_USER: z.string().default("local"),
+    POSTGRES_DB: z.string().default("local"),
+    POSTGRES_PASSWORD: z.string().default("local"),
     NODE_ENV: z.string().default("production")
 })
 
