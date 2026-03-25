@@ -3,7 +3,7 @@ import { env } from 'env'
 
 async function status(request, response) {
 
-
+    console.log(env.NODE_ENV)
     const updatedAt = new Date().toISOString();
     const databaseVersionResult = await database.query('SHOW server_version;');
     const databaseVersionValue = databaseVersionResult.rows[0].server_version;

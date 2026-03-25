@@ -1,7 +1,6 @@
 import { Client, Pool } from 'pg';
 import { env } from 'env'
 
-console.log(env.NODE_ENV)
 
 const poolConfig = env.NODE_ENV === 'production' ?
     {
