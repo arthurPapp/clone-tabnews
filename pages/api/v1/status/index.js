@@ -5,7 +5,7 @@ async function status(request, response) {
 
     console.log(env.NODE_ENV)
     console.log(env.POSTGRES_URL)
-    // const updatedAt = new Date().toISOString();
+    const updatedAt = new Date().toISOString();
     // const databaseVersionResult = await database.query('SHOW server_version;');
     // const databaseVersionValue = databaseVersionResult.rows[0].server_version;
 
@@ -20,7 +20,7 @@ async function status(request, response) {
     // const databaseOpenedConnectionsValue = databaseOpenedConnectionsResult.rows[0].count;
 
 
-    response.status(200);
+    response.status(200).json({ updated_at: updatedAt });
     // .json({
     //     updated_at: updatedAt,
     //     dependencies: {
