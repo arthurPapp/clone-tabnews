@@ -9,6 +9,7 @@ async function query(queryObject) {
         database: env.POSTGRES_DB,
         password: env.POSTGRES_PASSWORD,
         ssl: {
+            require: true,
             rejectUnauthorized: false,
         },
     });
