@@ -2,7 +2,9 @@ import { Client, Pool } from 'pg';
 import { env } from 'env'
 
 
-const poolConfig = env.NODE_ENV === 'production' ?
+const isProduction = env.NODE_ENV === 'production' || process.env.VERCEL === '1';
+
+const poolConfig = isProduction ?
     {
         connectionString: env.POSTGRES_URL,
         ssl: {
