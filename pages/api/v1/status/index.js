@@ -1,4 +1,4 @@
-import database from 'infra/database.js';
+//import database from 'infra/database.js';
 import { env } from 'env'
 
 async function status(request, response) {
