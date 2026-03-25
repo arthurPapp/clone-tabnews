@@ -7,9 +7,10 @@ const isProduction = env.NODE_ENV === 'production' || process.env.VERCEL === '1'
 const poolConfig = isProduction ?
     {
         connectionString: env.POSTGRES_URL,
-        ssl: {
-            rejectUnauthorized: false,
-        }
+        ssl: true
+        // ssl: {
+        //     rejectUnauthorized: false,
+        // }
     }
     : {
         host: env.POSTGRES_HOST,
