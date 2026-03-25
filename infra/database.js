@@ -1,38 +1,37 @@
-// import { Client, Pool } from 'pg';
+import { Pool } from 'pg';
 import { env } from 'env'
 
 
 const isProduction = env.NODE_ENV === 'production' || process.env.VERCEL === '1';
 
-// const poolConfig = isProduction ?
-//     {
-//         connectionString: env.POSTGRES_URL,
-//         ssl: {
-//             rejectUnauthorized: false,
-//         }
-//     }
-//     : {
-//         host: env.POSTGRES_HOST,
-//         port: env.POSTGRES_PORT,
-//         user: env.POSTGRES_USER,
-//         database: env.POSTGRES_DB,
-//         password: env.POSTGRES_PASSWORD,
-//     };
+const poolConfig = isProduction ?
+    {
+        connectionString: env.POSTGRES_URL,
+        ssl: {
+            rejectUnauthorized: false,
+        }
+    }
+    : {
+        host: env.POSTGRES_HOST,
+        port: env.POSTGRES_PORT,
+        user: env.POSTGRES_USER,
+        database: env.POSTGRES_DB,
+        password: env.POSTGRES_PASSWORD,
+    };
 
-// const pool = new Pool(poolConfig);
+const pool = new Pool(poolConfig);
 
 async function query(queryObject) {
     let client;
     try {
-        // client = await pool.connect();
-        const result = null;
-        // = await client.query(queryObject);
+        client = await pool.connect();
+        const result = await client.query(queryObject);
 
         return result;
     } catch (err) {
         console.error(err);
     } finally {
-        //await client.release();
+        await client.release();
         //await client.end();
     }
 
