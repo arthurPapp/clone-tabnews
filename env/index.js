@@ -8,6 +8,7 @@ const envSchema = z.object({
     POSTGRES_USER: z.string(),
     POSTGRES_DB: z.string(),
     POSTGRES_PASSWORD: z.string(),
+    NODE_ENV: z.string().default("development")
 })
 
 const _env = envSchema.safeParse(process.env)

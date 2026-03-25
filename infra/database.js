@@ -1,29 +1,32 @@
-import { Client } from 'pg';
+import { Client, Pool } from 'pg';
 import { env } from 'env'
 
-async function query(queryObject) {
-    const client = new Client({
+const poolConfig = env.NODE_ENV === 'production' ?
+    {
+        connectionString: env.POSTGRES_URL,
+    }
+    : {
         host: env.POSTGRES_HOST,
         port: env.POSTGRES_PORT,
         user: env.POSTGRES_USER,
         database: env.POSTGRES_DB,
         password: env.POSTGRES_PASSWORD,
-        ssl: {
-            require: true,
-            rejectUnauthorized: false,
-        },
-    });
+    };
 
+const pool = new Pool(poolConfig);
+
+async function query(queryObject) {
+    let client;
     try {
-        await client.connect();
-
+        client = await pool.connect();
         const result = await client.query(queryObject);
 
         return result;
     } catch (err) {
         console.error(err);
     } finally {
-        await client.end();
+        await client.release();
+        //await client.end();
     }
 
 
