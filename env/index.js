@@ -9,7 +9,7 @@ const envSchema = z.object({
     POSTGRES_DB: z.string().default("local"),
     POSTGRES_PASSWORD: z.string().default("local"),
     NODE_ENV: z.string().default("production"),
-    POSTGRES_URL: z.string().default("local")
+    DATABASE_URL: z.string().default("local")
 })
 
 const _env = envSchema.safeParse(process.env)
