@@ -27,8 +27,6 @@ async function getNewClient() {
     ssl: getSSLValues(),
   });
 
-  console.log("HOST HML: " + env.POSTGRES_HOST);
-
   await client.connect();
   return client;
 }
