@@ -61,6 +61,6 @@ export default [
 
   // 3. Pastas e Arquivos ignorados pelo Linter
   {
-    ignores: [".next/**", "out/**", "build/**", "node_modules/**"],
+    ignores: [".next/**", "out/**", "build/**", "node_modules/**", "infra/migrations/**/*"],
   },
 ];
