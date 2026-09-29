@@ -1,4 +1,3 @@
-import { env } from "env";
 import migrationRunner from "node-pg-migrate";
 import { join } from "node:path";
 import database from "infra/database";

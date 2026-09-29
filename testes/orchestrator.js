@@ -14,6 +14,7 @@ async function waitForAllServices() {
       },
     });
 
+    // eslint-disable-next-line no-unused-vars
     async function fetchStatusPage(bail) {
       try {
         const response = await fetch("http://localhost:3000/api/v1/status");
