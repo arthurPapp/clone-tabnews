@@ -1,4 +1,4 @@
-import { Client, Pool } from "pg";
+import { Client } from "pg";
 import { env } from "env";
 
 async function query(queryObject) {
