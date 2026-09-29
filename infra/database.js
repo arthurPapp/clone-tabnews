@@ -1,7 +1,5 @@
-import { Client, Pool } from 'pg';
-import { env } from 'env'
-
-
+import { Client, Pool } from "pg";
+import { env } from "env";
 
 async function query(queryObject) {
   let client;
@@ -37,7 +35,8 @@ export default {
 };
 
 function getSSLValues() {
-  const isProduction = env.NODE_ENV === 'production' || process.env.VERCEL === '1';
+  const isProduction =
+    env.NODE_ENV === "production" || process.env.VERCEL === "1";
 
   return isProduction;
 }
