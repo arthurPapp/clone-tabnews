@@ -9,7 +9,7 @@ export default [
   {
     files: ["**/*.{js,jsx,ts,tsx}"],
     plugins: {
-      "react": reactPlugin,
+      react: reactPlugin,
       "react-hooks": hooksPlugin,
       "@next/next": nextPlugin,
     },
@@ -23,7 +23,7 @@ export default [
       },
       globals: {
         ...globals.browser, // Reconhece fetch, window, etc.
-        ...globals.node,    // Reconhece process, console, require, etc.
+        ...globals.node, // Reconhece process, console, require, etc.
       },
     },
     settings: {
@@ -36,13 +36,16 @@ export default [
       ...reactPlugin.configs.recommended.rules,
       ...hooksPlugin.configs.recommended.rules,
       ...nextPlugin.configs.recommended.rules,
-      
+
       "react/react-in-jsx-scope": "off", // Desativa obrigatoriedade de importar o React no Next.js
-      "no-unused-vars": ["warn", { 
-            "argsIgnorePattern": "^_", 
-            "varsIgnorePattern": "^_" 
-        }],
-      "no-useless-catch": "off",         // Transforma variáveis não usadas em avisos, não erros bloqueantes
+      "no-unused-vars": [
+        "warn",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+        },
+      ],
+      "no-useless-catch": "off", // Transforma variáveis não usadas em avisos, não erros bloqueantes
     },
   },
 
@@ -58,11 +61,6 @@ export default [
 
   // 3. Pastas e Arquivos ignorados pelo Linter
   {
-    ignores: [
-      ".next/**",
-      "out/**",
-      "build/**",
-      "node_modules/**",
-    ],
+    ignores: [".next/**", "out/**", "build/**", "node_modules/**"],
   },
 ];
