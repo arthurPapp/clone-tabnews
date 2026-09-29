@@ -5,7 +5,12 @@ import hooksPlugin from "eslint-plugin-react-hooks";
 import globals from "globals";
 
 export default [
-  // 1. Configuração de Regras Globais e Plugins
+  // 1. Pastas e Arquivos ignorados globalmente pelo Linter (Debe vir primeiro)
+  {
+    ignores: [".next/", "out/", "build/", "node_modules/", "infra/migrations/"],
+  },
+
+  // 2. Configuração de Regras Globais e Plugins
   {
     files: ["**/*.{js,jsx,ts,tsx}"],
     plugins: {
@@ -18,17 +23,17 @@ export default [
       sourceType: "module",
       parserOptions: {
         ecmaFeatures: {
-          jsx: true, // Permite ler a sintaxe do React (corrige o Unexpected token <)
+          jsx: true,
         },
       },
       globals: {
-        ...globals.browser, // Reconhece fetch, window, etc.
-        ...globals.node, // Reconhece process, console, require, etc.
+        ...globals.browser,
+        ...globals.node,
       },
     },
     settings: {
       react: {
-        version: "detect", // Tira o aviso amarelo de versão do React
+        version: "detect",
       },
     },
     rules: {
@@ -37,7 +42,7 @@ export default [
       ...hooksPlugin.configs.recommended.rules,
       ...nextPlugin.configs.recommended.rules,
 
-      "react/react-in-jsx-scope": "off", // Desativa obrigatoriedade de importar o React no Next.js
+      "react/react-in-jsx-scope": "off",
       "no-unused-vars": [
         "warn",
         {
@@ -45,22 +50,17 @@ export default [
           varsIgnorePattern: "^_",
         },
       ],
-      "no-useless-catch": "off", // Transforma variáveis não usadas em avisos, não erros bloqueantes
+      "no-useless-catch": "off",
     },
   },
 
-  // 2. Configuração Específica para a pasta de testes (Jest / Vitest)
+  // 3. Configuração Específica para a pasta de testes (Jest / Vitest)
   {
     files: ["**/testes/**/*.js", "**/*.test.js", "**/*.spec.js"],
     languageOptions: {
       globals: {
-        ...globals.jest, // Reconhece test, expect, beforeAll, etc.
+        ...globals.jest,
       },
     },
-  },
-
-  // 3. Pastas e Arquivos ignorados pelo Linter
-  {
-    ignores: [".next/**", "out/**", "build/**", "node_modules/**", "infra/migrations/**/*"],
   },
 ];
