@@ -3,7 +3,7 @@ import orchestrator from "testes/orchestrator";
 beforeAll(async () => {
   await orchestrator.waitForAllServices();
   await orchestrator.clearDatabase();
-  });
+});
 
 describe("POST  to /api/v1/migrations", () => {
   describe("Anonymous user", () => {
