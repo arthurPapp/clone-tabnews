@@ -17,7 +17,7 @@
     "lint:eslint:check": "eslint .",
     "lint:eslint:fix": "eslint . --fix",
     "test": "npm run services:up && npm run services:wait:database && concurrently -n next,jest --hide next -k -s command-jest \"next dev\" \"jest --runInBand\"",
-    "test:watch": "jest --watchAll --runInBand",
+    "test:watch": "jest --watchAll --runInBand --verbose",
     "posttest": "npm run services:stop",
     "prepare": "husky",
     "commit": "cz"
